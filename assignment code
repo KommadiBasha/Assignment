@@ -1,0 +1,44 @@
+package TestProgram;
+import java.util.Scanner;
+public class CodingAssignment {
+		public static void main(String[] args) 
+		{
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the number of jobs:");
+			int range = sc.nextInt();
+			System.out.println("Enter job start time, end time, and earnings:");
+			int[][] arr = new int[range][3];
+			CodingAssignment ca= new CodingAssignment();
+			for(int i=0;i<arr.length;i++)
+			{
+				for(int j=0;j<arr[0].length;j++)
+				{
+					arr[i][j] = sc.nextInt();
+				}
+			}
+			int total[] = ca.calculate(arr);
+			System.out.println("The no.of tasks and earnings available for others");
+			for(int i: total)
+			{
+			
+				System.out.println(i);
+			}
+		}
+		public  int[] calculate(int[][] a)
+		{
+			int max = a[0][2];
+			int sum = 0;
+			for(int i=0;i<a.length;i++)
+			{
+				sum+=a[i][2];
+				if(max<a[i][2])
+					max = a[i][2];	
+			}
+			
+			int[] total = new int[2];
+			total[0] = a.length-1;
+			total[1] = sum-max;
+			
+			return total;	
+		}
+}
